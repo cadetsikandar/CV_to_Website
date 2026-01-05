@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikandar Ali - Computer Vision Engineer</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #6a3093, #a044ff);
+            background-attachment: fixed;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+        }
+
+        p {
+            color: #eee;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #a044ff;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        #hero {
+            text-align: center;
+            background: linear-gradient(135deg, #6a3093, #a044ff);
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        #about {
+            background: linear-gradient(135deg, #4a00e0, #8a2be2);
+        }
+
+        #about p {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        #skills {
+            background: linear-gradient(135deg, #3c1053, #7b2cbf);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Experience and Education Sections */
+        #experience, #education {
+            background: linear-gradient(135deg, #2c003e, #5a189a);
+        }
+
+        .timeline {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #a044ff;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            position: relative;
+            margin: 20px 0;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            float: left;
+            clear: right;
+            transform: translateX(-30px);
+        }
+
+        .timeline-item:nth-child(even) {
+            float: right;
+            clear: left;
+            transform: translateX(30px);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: #a044ff;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -12px;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: linear-gradient(135deg, #1a0027, #4a148c);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1rem;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #0d0221, #26004d);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        input, textarea {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        button {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            background: #a044ff;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #8a2be2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 20px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                float: none;
+                transform: translateX(0);
+            }
+
+            .timeline-item:nth-child(even) {
+                float: none;
+                transform: translateX(0);
+            }
+
+            .timeline-item::after {
+                left: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="hero">
+        <h1>Sikandar Ali</h1>
+        <p>Computer Vision Engineer</p>
+        <p>+923102660600 | sikandar.umrani.5@gmail.com</p>
+        <p>Islamabad, Islamabad, Pakistan | Open to Relocate</p>
+        <a href="https://www.linkedin.com/in/sikandar-ali" target="_blank">LinkedIn</a>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Passionate and solution-driven Python developer with a strong foundation in deep learning, data science, and AI, adept at leveraging computer vision for infrastructure monitoring. Experienced in designing machine learning models, analyzing complex datasets, and automating tasks using Python-based tools, with expertise in algorithms for image processing and object detection. Known for fast learning, clean coding practices, and collaborative development, with proven communication skills and experience working with hardware engineers to enhance product robustness and sustainability.
+        </p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill">Computer Vision</div>
+            <div class="skill">Segmentation</div>
+            <div class="skill">Object Detection</div>
+            <div class="skill">OpenCV</div>
+            <div class="skill">YOLO</div>
+            <div class="skill">Python</div>
+            <div class="skill">C++</div>
+            <div class="skill">Java</div>
+            <div class="skill">PyTorch</div>
+            <div class="skill">TensorFlow</div>
+            <div class="skill">Scikit-Learn</div>
+            <div class="skill">Data Cleaning</div>
+            <div class="skill">Data Processing</div>
+            <div class="skill">Data Augmentation</div>
+            <div class="skill">Data Visualization</div>
+            <div class="skill">Git & GitHub</div>
+            <div class="skill">Jupyter</div>
+            <div class="skill">Anaconda</div>
+            <div class="skill">Debugging</div>
+            <div class="skill">Problem-Solving</div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Python Developer</h3>
+                <p>Freelance</p>
+                <p>Jan '23 — Jan '24</p>
+                <p>Remote</p>
+                <ul>
+                    <li>Built Python-based data analysis pipelines using pandas and matplotlib</li>
+                    <li>Developed and deployed Streamlit web apps for real-time data dashboards</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>BS Computer Science</h3>
+                <p>Riphah International University</p>
+                <p>GPA: 3.07</p>
+                <p>Jan '20 — Dec '24</p>
+                <p>Islamabad, Pakistan</p>
+                <p>Relevant Coursework: Deep Learning, Machine Learning, Operating Systems, Software Engineering</p>
+                <p>Final Year Project: UML Diagram Recognition and Conversion System</p>
+            </div>
+            <div class="timeline-item">
+                <h3>Intermediate</h3>
+                <p>Cadet College Petaro</p>
+                <p>Mar '18 — Feb '20</p>
+                <p>Jamshoro, Pakistan</p>
+                <ul>
+                    <li>Trained athlete and gymnast with active participation in college sports and physical disciplines</li>
+                    <li>Played hockey, cricket, basketball, swimming, and horse riding at inter-house and inter-college levels</li>
+                    <li>Participated in military parade drills and represented college in indoor & outdoor shooting teams</li>
+                    <li>Served as an active member of the elite Tiger Squad, demonstrating discipline and leadership</li>
+                    <li>Recognized for teamwork, physical endurance, and excellence in sportsmanship</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-container">
+            <div class="project-card">
+                <h3>UML Recognition and Conversion System</h3>
+                <p>Riphah International University</p>
+                <p>Dec '23 — Oct '24</p>
+                <p>Islamabad, Pakistan</p>
+                <p>Developed a Python-based system to recognize UML diagrams from images (hand-drawn and digital), integrating Computer Vision techniques for enhanced accuracy. Used OpenCV for shape detection and Tesseract OCR for reading class names, attributes, and relationships, applying Algorithms for improved Segmentation. Converted parsed UML into code stubs (e.g., Python or Java classes) and standard file formats (e.g., XML or JSON). Designed and tested custom parsing logic for interpreting visual diagram elements with high accuracy, leveraging Spatial Intelligence for better Mapping. Automated a manual process used by software developers, saving time and reducing errors in early software design, showcasing Infrastructure improvements and sustainability.</p>
+            </div>
+            <div class="project-card">
+                <h3>Real-Time Face Recognition Attendance System with Liveness Detection</h3>
+                <p>Developed a real-time face recognition attendance system with blink-based liveness detection using PyTorch, FaceNet, MTCNN, and MediaPipe, optimized for scalability with PCA and FAISS, integrating Object Detection and Classification for robust Tracking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <form id="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Load Google Fonts
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap';
+        document.head.appendChild(link);
+    </script>
+</body>
+</html>

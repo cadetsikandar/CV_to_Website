@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Haider - AI Automation & Workflow Developer | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00D9FF;
+            --secondary-color: #9D4EDD;
+            --accent-color: #39FF14;
+            --background-color: #0A0E27;
+            --text-color: #FFFFFF;
+            --spacing-sm: 16px;
+            --spacing-lg: 48px;
+            --radius-md: 8px;
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.5);
+            --transition-base: 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            z-index: -2;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="rgba(255,255,255,0.1)"/><rect x="50" y="50" width="100" height="100" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 20px 20px;
+            animation: float 5s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 80px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 24px;
+            margin-top: var(--spacing-sm);
+            animation: fadeInUp 1s ease-out 0.5s;
+            position: relative;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            animation: drawUnderline 2s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes drawUnderline {
+            to { width: 100%; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            padding: var(--spacing-sm) 0;
+            transition: var(--transition-base);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .navbar-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: var(--spacing-sm);
+            transition: var(--transition-base);
+        }
+
+        .navbar-menu a:hover,
+        .navbar-menu a.active {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .navbar-hamburger {
+            display: none;
+            font-size: 24px;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* About Section */
+        .about {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .about-content {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .about-image {
+            flex: 1;
+            border: 2px solid var(--accent-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-text p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .about-stats {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .about-stat {
+            text-align: center;
+        }
+
+        .about-stat span {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .about-cv-button {
+            align-self: flex-start;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-base);
+            margin-top: var(--spacing-sm);
+        }
+
+        .about-cv-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .skill-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-icon {
+            font-size: 32px;
+            margin-bottom: var(--spacing-sm);
+            color: var(--accent-color);
+        }
+
+        .skill-name {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .skill-level {
+            height: 8px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .skill-level-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            transition: width 1s ease;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .experience-timeline {
+            position: relative;
+            padding-left: var(--spacing-lg);
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: var(--accent-color);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: calc(-1 * var(--spacing-lg) - 10px);
+            width: 20px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        .experience-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            transition: var(--transition-base);
+        }
+
+        .experience-content:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .experience-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .experience-duration {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .experience-description {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .experience-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .experience-tag {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            padding: 4px 8px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+        }
+
+        /* Education Section */
+        .education {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .education-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+            transition: var(--transition-base);
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .education-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .education-institution {
+            font-size: 18px;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .education-details {
+            font-size: 16px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(10, 14, 39, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+        }
+
+        .project-description {
+            font-size: 16px;
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-color);
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .project-stack-badge {
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            padding: 4px 8px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+        }
+
+        .project-view-button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .project-view-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--background-color);
+        }
+
+        .contact-content {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-bottom: 2px solid var(--accent-color);
+            color: var(--text-color);
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            font-size: 16px;
+            transition: var(--transition-base);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-bottom-color: var(--primary-color);
+        }
+
+        .contact-form label {
+            position: absolute;
+            top: calc(var(--spacing-sm) + 2px);
+            left: var(--spacing-sm);
+            color: var(--text-color);
+            transition: var(--transition-base);
+            pointer-events: none;
+        }
+
+        .contact-form input:focus + label,
+        .contact-form input:not(:placeholder-shown) + label,
+        .contact-form textarea:focus + label,
+        .contact-form textarea:not(:placeholder-shown) + label {
+            top: 0;
+            font-size: 12px;
+            color: var(--primary-color);
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .contact-info-icon {
+            font-size: 24px;
+            margin-right: var(--spacing-sm);
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            color: var(--background-color);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer-about,
+        .footer-links,
+        .footer-social,
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-about h3,
+        .footer-links h3,
+        .footer-social h3,
+        .footer-contact h3 {
+            font-size: 24px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-about p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a,
+        .footer-contact p {
+            color: var(--background-color);
+            text-decoration: none;
+            margin-bottom: var(--spacing-sm);
+            transition: var(--transition-base);
+        }
+
+        .footer-links a:hover,
+        .footer-contact p:hover {
+            color: var(--background-color);
+            text-decoration: underline;
+        }
+
+        .footer-social a {
+            font-size: 32px;
+            margin-right: var(--spacing-sm);
+            color: var(--background-color);
+            transition: var(--transition-base);
+        }
+
+        .footer-social a:hover {
+            transform: translateY(-5px);
+            text-shadow: 0 0 10px var(--background-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+        }
+
+        #backToTop {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            padding: var(--spacing-sm);
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        #backToTop:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-name {
+                font-size: 64px;
+            }
+
+            .navbar-menu {
+                display: none;
+            }
+
+            .navbar-hamburger {
+                display: block;
+            }
+
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-logo">Ali Haider</div>
+            <div class="navbar-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="navbar-hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-name">Ali Haider</h1>
+            <h2 class="hero-title">AI Automation & Workflow Developer</h2>
+        </div>
+    </header>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x500" alt="Ali Haider">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Aspiring AI Automation & Workflow Developer specializing in n8n. Currently pursuing a BSCS at AIR University Islamabad, I have hands-on experience in building voice-based bots, task automation pipelines, and AI-integrated services. My passion lies in leveraging technology to create efficient workflows and enhance productivity.</p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span>10+</span>
+                            <p>Projects</p>
+                        </div>
+                        <div class="about-stat">
+                            <span>2</span>
+                            <p>Years of Experience</p>
+                        </div>
+                        <div class="about-stat">
+                            <span>1</span>
+                            <p>University</p>
+                        </div>
+                    </div>
+                    <button class="about-cv-button">Download CV</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-skill="n8n">
+                    <i class="fas fa-cogs skill-icon"></i>
+                    <h3 class="skill-name">n8n Workflow Automation</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="OpenAI">
+                    <i class="fas fa-brain skill-icon"></i>
+                    <h3 class="skill-name">OpenAI (GPT-4o) Integration</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="ElevenLabs">
+                    <i class="fas fa-microphone skill-icon"></i>
+                    <h3 class="skill-name">ElevenLabs (Voice AI)</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="Telegram">
+                    <i class="fab fa-telegram skill-icon"></i>
+                    <h3 class="skill-name">Telegram Bot Integration</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="REST">
+                    <i class="fas fa-server skill-icon"></i>
+                    <h3 class="skill-name">REST APIs & Webhooks</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="Google Sheets">
+                    <i class="fas fa-table skill-icon"></i>
+                    <h3 class="skill-name">Google Sheets Automation</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="Programming">
+                    <i class="fas fa-code skill-icon"></i>
+                    <h3 class="skill-name">Java, Python, C++</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="Web Development">
+                    <i class="fas fa-laptop-code skill-icon"></i>
+                    <h3 class="skill-name">HTML, CSS, Bootstrap, JavaScript</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="MySQL">
+                    <i class="fas fa-database skill-icon"></i>
+                    <h3 class="skill-name">MySQL (phpMyAdmin)</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card" data-skill="AI">
+                    <i class="fas fa-robot skill-icon"></i>
+                    <h3 class="skill-name">AI Agents, Voice AI, Automation Flows</h3>
+                    <div class="skill-level">
+                        <div class="skill-level-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>My Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3 class="experience-title">AI Assistant Telegram Bot</h3>
+                        <p class="experience-duration">2023 - Present</p>
+                        <p class="experience-description">Built with n8n, GPT-4o-mini, and Google Sheets to read and reply to emails/messages, connected with Telegram.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">n8n</span>
+                            <span class="experience-tag">OpenAI</span>
+                            <span class="experience-tag">Google Sheets</span>
+                            <span class="experience-tag">Telegram</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3 class="experience-title">Voice-Based Restaurant Reservation Bot</h3>
+                        <p class="experience-duration">2022 - 2023</p>
+                        <p class="experience-description">Used ElevenLabs + n8n to create a voice AI agent that shares menu info, takes bookings, and logs them in Google Sheets.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">n8n</span>
+                            <span class="experience-tag">ElevenLabs</span>
+                            <span class="experience-tag">Google Sheets</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3 class="experience-title">Gmail & Telegram Automation</h3>
+                        <p class="experience-duration">2022</p>
+                        <p class="experience-description">Connected Gmail to Telegram using n8n to auto-forward, summarize, and respond to emails based on user prompts.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">n8n</span>
+                            <span class="experience-tag">Gmail</span>
+                            <span class="experience-tag">Telegram</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-content">
+                        <h3 class="experience-title">Data Sync Automation</h3>
+                        <p class="experience-duration">2021 - 2022</p>
+                        <p class="experience-description">Automated form submissions and spreadsheet updates using webhooks + Google Sheets in n8n.</p>
+                        <div class="experience-tags">
+                            <span class="experience-tag">n8n</span>
+                            <span class="experience-tag">Google Sheets</span>
+                            <span class="experience-tag">Webhooks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2>My Education</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3 class="education-title">BS Computer Science</h3>
+                    <p class="education-institution">AIR University, Islamabad</p>
+                    <p class="education-details">Currently pursuing my undergraduate degree in Computer Science, focusing on AI and automation technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="AI Assistant Telegram Bot" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">AI Assistant Telegram Bot</h3>
+                        <p class="project-description">A Telegram bot that reads and replies to emails/messages using n8n and GPT-4o-mini.</p>
+                        <div class="project-stack">
+                            <span class="project-stack-badge">n8n</span>
+                            <span class="project-stack-badge">OpenAI</span>
+                            <span class="project-stack-badge">Google Sheets</span>
+                            <span class="project-stack-badge">Telegram</span>
+                        </div>
+                        <button class="project-view-button">View Project</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Voice-Based Restaurant Reservation Bot" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Voice-Based Restaurant Reservation Bot</h3>
+                        <p class="project-description">A voice AI agent for restaurant reservations using ElevenLabs and n8n.</p>
+                        <div class="project-stack">
+                            <span class="project-stack-badge">n8n</span>
+                            <span class="project-stack-badge">ElevenLabs</span>
+                            <span class="project-stack-badge">Google Sheets</span>
+                        </div>
+                        <button class="project-view-button">View Project</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Gmail & Telegram Automation" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Gmail & Telegram Automation</h3>
+                        <p class="project-description">Automating email forwarding, summarizing, and responding using n8n.</p>
+                        <div class="project-stack">
+                            <span class="project-stack-badge">n8n</span>
+                            <span class="project-stack-badge">Gmail</span>
+                            <span class="project-stack-badge">Telegram</span>
+                        </div>
+                        <button class="project-view-button">View Project</button>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/400x200" alt="Data Sync Automation" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Data Sync Automation</h3>
+                        <p class="project-description">Automating form submissions and spreadsheet updates using n8n and webhooks.</p>
+                        <div class="project-stack">
+                            <span class="project-stack-badge">n8n</span>
+                            <span class="project-stack-badge">Google Sheets</span>
+                            <span class="project-stack-badge">Webhooks</span>
+                        </div>
+                        <button class="project-view-button">View Project</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <label for="name">Name</label>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <label for="email">Email</label>
+                    <textarea id="message" placeholder="Your Message" required></textarea>
+                    <label for="message">Message</label>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt contact-info-icon"></i>
+                        <p>Rahim Yar Khan, Pakistan</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone contact-info-icon"></i>
+                        <p>03030222057</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope contact-info-icon"></i>
+                        <p>aly.haider069@gmail.com</p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fab fa-github contact-info-icon"></i>
+                        <p><a href="https://github.com/alyhaider096" target="_blank">github.com/alyhaider096</a></p>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fab fa-linkedin contact-info-icon"></i>
+                        <p><a href="https://linkedin.com/in/ali-haider-300aab245" target="_blank">linkedin.com/in/ali-haider-300aab245</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>About Me</h3>
+                    <p>Aspiring AI Automation & Workflow Developer with a focus on n8n, currently studying at AIR University Islamabad.</p>
+                    <p>Available for remote positions as an n8n Specialist, Automation Developer, or AI Workflow Integrator.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Follow Me</h3>
+                    <a href="https://github.com/alyhaider096" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/ali-haider-300aab245" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rahim Yar Khan, Pakistan</p>
+                    <p><i class="fas fa-phone"></i> 03030222057</p>
+                    <p><i class="fas fa-envelope"></i> aly.haider069@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ali Haider. All Rights Reserved.</p>
+                <p>Made with ❤️ and Code</p>
+                <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Active Nav Highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.navbar-menu a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.navbar-hamburger');
+        const menu = document.querySelector('.navbar-menu');
+
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form Validation
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (name === '' || email === '' || message === '') {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Intersection Observer for Reveals
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '-100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.about-content, .skills-grid, .experience-timeline, .education-grid, .projects-grid, .contact-content').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Typing Effect for Hero Title
+        const heroTitle = document.querySelector('.hero-title');
+        const text = heroTitle.textContent;
+        heroTitle.textContent = '';
+
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                heroTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        typeWriter();
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.about-stat span');
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / 200;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+
+        // Stagger Animation for Skills
+        document.querySelectorAll('.skill-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Hover Effects
+        document.querySelectorAll('.skill-card, .experience-content, .education-card, .project-card, .contact-form button, .footer-social a').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-10px)';
+                item.style.boxShadow = 'var(--shadow-lg)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0)';
+                item.style.boxShadow = 'none';
+            });
+        });
+
+        // Project Image Zoom
+        document.querySelectorAll('.project-card').forEach(card => {
+            const image = card.querySelector('.project-image');
+            card.addEventListener('mouseenter', () => {
+                image.style.transform = 'scale(1.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                image.style.transform = 'scale(1)';
+            });
+        });
+
+        // Link Underline Effect
+        document.querySelectorAll('.footer-links a, .footer-contact p').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                link.style.textDecoration = 'underline';
+            });
+            link.addEventListener('mouseleave', () => {
+                link.style.textDecoration = 'none';
+            });
+        });
+
+        // Social Icons Animation
+        document.querySelectorAll('.footer-social a').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'translateY(-5px)';
+                icon.style.textShadow = '0 0 10px var(--background-color)';
+            });
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'translateY(0)';
+                icon.style.textShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
